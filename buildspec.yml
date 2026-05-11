@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "No build needed for simple HTML site"
+
+  post_build:
+    commands:
+      - aws s3 sync . s3://untouchable-s3-bucket --delete
+
+artifacts:
+  files:
+    - '**/*'
